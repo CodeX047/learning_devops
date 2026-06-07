@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   return res.json({
-    health: "ok",
+    message: "server is healthy",
   });
 });
 
