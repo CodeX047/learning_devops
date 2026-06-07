@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   return res.json({
-    message: "server is healthy",
+    message: "server is healthy! GitHub actions are working!",
   });
 });
 
