@@ -37,9 +37,14 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            cd /home/ubuntu/learning_devops
-            git pull
-            npm install
-            pm2 restart 0
+            # kill the docker container
+            sudo docker rm -f devops-chaicode || true
+
+            # Again pull the image
+            sudo docker pull vishal040705/devops-chaicode
+
+            # Run the container
+            sudo docker run -d --name devops-chaicode -p 8000:8000 vishal040705/devops-chaicode
+
+            # Clean up old/unused images
+            sudo docker image prune -f
