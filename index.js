@@ -9,7 +9,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   return res.json({
     message: "server is healthy! GitHub actions are working!",
-    status: "success",
+    status: "Github actions with Docker 🐳",
   });
 });
 
