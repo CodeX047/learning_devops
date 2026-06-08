@@ -13,6 +13,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Login to Docker Hub
+        uses: docker/login-action@v4
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: QEMU
+        uses: docker/setup-qemu-action@v4
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Docker Build and Push
+        run: |
+          docker build -t vishalpatil/learning_devops .
+          docker push vishalpatil/learning_devops
+
       - name: Deploy to EXCloud
         uses: appleboy/ssh-action@v1.0.3
         with:
