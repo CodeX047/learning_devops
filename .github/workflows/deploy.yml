@@ -27,8 +27,8 @@ jobs:
 
       - name: Docker Build and Push
         run: |
-          docker build -t vishalpatil/learning_devops .
-          docker push vishalpatil/learning_devops
+          docker build -t vishal040705/devops-chaicode .
+          docker push vishal040705/devops-chaicode
 
       - name: Deploy to EXCloud
         uses: appleboy/ssh-action@v1.0.3
